@@ -2,7 +2,8 @@
 #include<stdlib.h>
 #include<malloc.h>
 void create_dlist();
-void display_dlist();void add_at_beg();
+void display_dlist();
+ void add_at_beg();
  void add_at_end();
  void search_list(); 
  void count_node();
@@ -12,7 +13,6 @@ void display_dlist();void add_at_beg();
  void delete_begining();
  void deleteEnd();
  void delete_specific_node();
-
 struct node
 {
    struct node* prev;
@@ -124,93 +124,6 @@ void display_dlist()
         temp=temp->next;
     }
 } 
-void add_at_beg()
-{
-   p= malloc(sizeof(struct node));
-    printf("\n enter value:");
-    scanf("%d",&p->data);
-     p->prev=NULL;
-     p->next=NULL;
-      temp=start;
-      p->next=temp;
-      temp->prev=p;
-      start=p;
-
-
-    }
- void add_at_end()
- {
-      p= malloc(sizeof(struct node));
-      printf("\n enter value:");
-      scanf("%d",&p->data);
-      p->next=NULL;
-      temp=start;
-      while(temp->next!=NULL)
-      {
-          temp=temp->next;
-      }
-      temp->next=p;
-      p->prev=temp;
-
-
- }
- void search_list()
-
- {    int n;
-      int  flag, count=0;
-      printf(" \n enter a element:");
-      scanf("%d",&n);
-       temp= start;
-    while(temp->next!=NULL)
-    {
-        count++;
-        if( temp->data==n)
-        {
-            flag=1;
-            break;
-        }
-        temp=temp->next;
-    }
-    if(flag==1)
-    {
-        printf("\n element are present at position  %d", count);
-    }
-    else
-    {
-        printf("\n data is not present");
-    }
- }
- void count_node()
- {
-     int count=0;
-     temp=start;
-     while(temp!=NULL)
-     {
-         count++;
-         temp=temp->next;
-     }
-     printf("\n numbers of node in list are  %d ",count);
- }
-void insert_node()
-{
-    int n,i;
-    printf(" enter a position .");
-    scanf("%d",&n);
-    p=malloc(sizeof(struct node));
-    printf("enter a element ");
-    scanf("%d",&p->data);
-    p->next=NULL;
-    temp=start;
-    for(i=1;i<n;i++)
-    {
-        temp=temp->next;
-    }
-    p->next=temp->next;
-    p->prev=temp; 
-    temp->next=p;
-
-
-}
 void insert_after()
 {
 
