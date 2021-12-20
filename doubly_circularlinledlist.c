@@ -9,11 +9,11 @@ void add_at_beg();
  void search_list(); 
  void count_node();
  void add_at_specific();
- /*void delete_begining();
+ void delete_begining();
  void deleteEnd();
  void delete_specific_node();
 
-*/
+
 
 
 struct node
@@ -23,7 +23,7 @@ struct node
    int data;
 };
  struct node *temp,*start=NULL;
- struct node*p;
+ struct node*p,*last;
 void main()
 {
     int ch;
@@ -72,7 +72,7 @@ void main()
             case 8:
             add_at_specific();
             break;
-            /*case 11:
+            case 11:
             delete_begining();
             break;
             case 12:
@@ -80,7 +80,7 @@ void main()
             break;
             case 13:
             delete_specific_node();
-            break;*/
+            break;
             default:
             printf(" INVAILD STATEMENT");
 
@@ -189,7 +189,127 @@ void add_at_specific()
         p->prev=temp;
         temp->next=p;
  } 
- void search()
- {
-     
+ 
+void search_list()
+
+ {    int n;
+      int  flag, c;
+      printf(" \n enter a element:");
+      scanf("%d",&n);
+       temp= start;
+    while(temp->next!=start)
+    {
+        c++;
+        if( temp->data==n)
+        {
+            flag=1;
+            break;
+        }
+        temp=temp->next;
+    }
+    if(flag==1)
+    {
+        printf("\n element are present at position %d", c);
+    }
+    else
+    {
+        printf("\n data is not present");
+    }
  }
+ void count_node()
+ {
+     int count=0;
+     temp=start;
+     do
+     {
+        count++;
+         temp=temp->next;
+     } 
+     
+     while(temp!=start);
+     
+     printf("\n numbers of node in list are%d ",count);
+ }
+void insert_node()
+{
+    int n,i;
+    printf(" enter a position .");
+    scanf("%d",&n);
+    p=malloc(sizeof(struct node));
+    printf("enter a element ");
+    scanf("%d",&p->data);
+    p->next=NULL;
+    temp=start;
+    for(i=1;i<n;i++)
+    {
+        temp=temp->next;
+    }
+     p->next=temp->next;
+     p->prev=temp;
+     temp->next=p;
+
+
+} 
+void delete_begining()
+{
+  if(start==NULL) 
+    printf("\n UNDERFLOW\n");  
+    
+    else if(start->next == start)  
+    {  
+        start = NULL;   
+        free(start);  
+        printf("\nNode Deleted\n");  
+    }  
+    else  
+    {  
+        temp = start;   
+        while(temp -> next != start)  
+        {  
+            temp = temp -> next;  
+        }  
+        temp -> next = start-> next;  
+        start -> next -> prev = temp;  
+        free(start);  
+        start= temp -> next;  
+        printf("\nNode Deleted\n");  
+    }  
+
+    }
+
+void deleteEnd()
+{ 
+    if(start==NULL)
+    printf("\n list is empty");
+    else if(start->next==start)
+    {
+        temp=start;
+        start=NULL;
+        free(temp);
+    }
+ else
+ {
+
+        
+    temp=start;
+    last=start->prev;
+    last->prev->next=temp;
+    temp->prev=last->prev;
+
+    free(last);
+}
+} 
+void delete_specific_node()
+{
+    int po, i;
+       printf("\n enter a position where you want insert node ");
+       scanf("%d",&po);
+         temp=start;
+        for(i=1;i<=po;i++)
+        {    
+            temp=temp->next;
+        } 
+        temp->prev->next=temp->next;
+        temp->next->prev=temp->prev;
+        free(temp);
+}
