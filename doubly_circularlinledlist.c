@@ -280,7 +280,7 @@ void delete_begining()
 void deleteEnd()
 { 
     if(start==NULL)
-    printf("\n list is empty");
+    printf(" list is empty");
     else if(start->next==start)
     {
         temp=start;
