@@ -77,6 +77,4 @@ void display()
     printf("%d/",arr[i]);
     printf("\n");
 }
-=======
 
->>>>>>> 339acb46e9947f5c9b652bcd86220f46fe115145
