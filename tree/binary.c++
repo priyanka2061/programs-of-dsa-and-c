@@ -1,3 +1,4 @@
+//Binary  search tree implementation
 #include<bits/stdc++.h>
 using namespace std;
 struct bst
